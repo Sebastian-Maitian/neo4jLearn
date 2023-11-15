@@ -1,0 +1,211 @@
+CREATE (HouseStark:House {title:'House Stark', capital:'Winterfell', familylanguage:'Winter is Coming', crest:'Direwolf'})
+CREATE (Rickard:Person {name:'Rickard Stark', survival:'Killed by Mad King'})
+CREATE (Lyarra:Person {name:'Lyarra Stark', survival:'Not Written'})
+CREATE (Lyanna:Person {name:'Lyanna Stark', survival:'Died after giving birth to Jon Snow'})
+CREATE (Benjen:Person {name:'Benjen Stark', survival:'Killed by whitewalkers for saving Jon Snow'})
+CREATE (Eddard:Person {name:'Eddard Stark', survival:'Killed by Joffrey'})
+CREATE (Robb:Person {name:'Robb Stark', survival:'Killed in the Red Wedding'})
+CREATE (Arya:Person {name:'Arya Stark', survuval:'alive'})
+CREATE (Brandon:Person {name:'Brandon Stark', survival:'alive'})
+CREATE (Sansa:Person {name:'Sansa Stark', survival:'alive'})
+CREATE (Rickon:Persion {name:'Rickon Stark', survival:'Killed by Ramsy Bolton in the Battle of the Bastards'})
+CREATE
+	(Rickard)-[:BELONG]->(HouseStark),
+	(Lyarra)-[:BELONG]->(HouseStark),
+	(Lyanna)-[:BELONG]->(HouseStark),
+	(Benjen)-[:BELONG]->(HouseStark),
+	(Eddard)-[:BELONG]->(HouseStark),
+	(Robb)-[:BELONG]->(HouseStark),
+	(Arya)-[:BELONG]->(HouseStark),
+	(Brandon)-[:BELONG]->(HouseStark),
+	(Sansa)-[:BELONG]->(HouseStark),
+	(Rickon)-[:BELONG]->(HouseStark)
+	
+CREATE 
+	(Rickard)-[:GET_MARRIED]->(Lyarra),
+	(Lyanna)-[:CHILDREN {roles:['daughter']}]->(Rickard),
+	(Benjen)-[:CHILDREN {roles:['son']}]->(Rickard),
+	(Eddard)-[:CHILDREN {roles:['son']}]->(Rickard),
+	(Robb)-[:CHILDREN {roles:['son']}]->(Eddard),
+	(Arya)-[:CHILDREN {roles:['daughter']}]->(Eddard),
+	(Brandon)-[:CHILDREN {roles:['son']}]->(Eddard),
+	(Sansa)-[:CHILDREN {roles:['daughter']}]->(Eddard),
+	(Rickon)-[:CHILDREN {roles:['son']}]->(Eddard)
+
+CREATE (Emil:Person {name:"Emil Eifrem", born:1978})
+CREATE (Walder:Person {name:'Walder Frey', survival:'Killed by Arya Stark'})
+CREATE (Walda:Person {name:'Walda Frey', survival:'Killed by Ramsay Bolton'})-[:CHILDREN {roles:['daughter']}]->(Walder)
+CREATE (Roslin:Person {name:'Roslin Frey', survival:'alive'})
+CREATE (Roslin)-[:CHILDREN {roles:['daughter']}]->(Walder)
+
+
+CREATE (Roose:Person {name:'Roose Bolton', survival:'Killed by Ramsay Bolton'})-[:GET_MARRIED]->(Walda)
+CREATE (Ramsay:Person {name:'Ramsay Bolton', survival:'Killed by Sansa Stark'})-[:GET_MARRIED]->(Sansa)
+
+
+CREATE (HouseLannister:House {title:'House Lannister', capital:'Casterly Rock', familylanguage:'Hear Me Roar', crest:'Golden Lion'})
+CREATE (Tycos:Person {name:'Tycos Lannister', survival:'Not Written'})
+CREATE (Jeyne:Person {name:'Jeyne Marbrand', survival:'Not Written'})
+CREATE (Joanna:Person {name:'Joanna Lannister', survival:'Died after giving birth to Tyrion Lannister'})
+CREATE (Tywin:Person {name:'Tywin Lannister', survival:'Killed by his son Tyrion Lannister'})
+CREATE (Kevan:Person {name:'Kevan Lannister', survival:'Died in Explosion at the Sept of Baylor'})
+CREATE (Cersei:Person {name:'Cersei Lannister', survival:'Killed by Dragonfire'})
+CREATE (Jaime:Person {name:'Jaime Lannister', survival:'Killed by Dragonfire'})
+CREATE (Tyrion:Person {name:'Tyrion Lannister', survival:'alive'})
+CREATE (Lancel:Person {name:'Lancel Lannister', survival:'Died in Explosion at the Sept of Baylor'})
+CREATE (Willem:Person {name:'Willem Lannister', survival:'Killed by one of Starks vassals'})
+CREATE (Martyn:Person {name:'Martyn Lannister', survival:'Killed by one of Starks vassals'})
+CREATE
+	(Tycos)-[:BELONG]->(HouseLannister),
+	(Jeyne)-[:BELONG]->(HouseLannister),
+	(Joanna)-[:BELONG]->(HouseLannister),
+	(Tywin)-[:BELONG]->(HouseLannister),
+	(Kevan)-[:BELONG]->(HouseLannister),
+	(Cersei)-[:BELONG]->(HouseLannister),
+	(Jaime)-[:BELONG]->(HouseLannister),
+	(Tyrion)-[:BELONG]->(HouseLannister),
+	(Lancel)-[:BELONG]->(HouseLannister),
+	(Willem)-[:BELONG]->(HouseLannister),
+	(Martyn)-[:BELONG]->(HouseLannister)
+CREATE
+	(Tycos)-[:GET_MARRIED]->(Jeyne),
+	(Tywin)-[:CHILDREN {roles:['son']}]->(Tycos),
+	(Kevan)-[:CHILDREN {roles:['son']}]->(Tycos),
+	(Tywin)-[:GET_MARRIED]->(Joanna),
+	(Cersei)-[:CHILDREN {roles:['daughter']}]->(Tywin),
+	(Jaime)-[:CHILDREN {roles:['son']}]->(Tywin),
+	(Tyrion)-[:CHILDREN {roles:['son']}]->(Tywin),
+	(Tyrion)-[:GET_MARRIED]->(Sansa),
+	(Cersei)-[:TWINS_AND_LOVERS]->(Jaime)
+
+CREATE (HouseBaratheon:House {title:'House Baratheon', capital:'Storm End', familylanguage:'Ours is the Fury', crest:'Black Buck'})
+CREATE (Steffon:Person {name:'Steffon Baratheon', survival:'Not Written'})-[:BELONG]->(HouseBaratheon)
+CREATE (Robert:Person {name:'Robert Baratheon', survival:'Killed by a Boar'})-[:BELONG]->(HouseBaratheon)
+CREATE (Stannis:Person {name:'Stannis Baratheon', survival:'Killed by Brienne Tarth'})-[:BELONG]->(HouseBaratheon)
+CREATE (Renly:Person {name:'Renly Baratheon', survival:'Killed by Shadow Magic'})-[:BELONG]->(HouseBaratheon)
+CREATE (Shireen:Person {name:'Shireen Baratheon', survival:'Burned to Death by her father Stannis'})-[:BELONG]->(HouseBaratheon)
+CREATE (Selyse:Person {name:'Selyse Florent', survival:'Hanged herself after her daughter Shireen dead'})-[:BELONG]->(HouseBaratheon)
+CREATE (Joffrey:Person {name:'Joffrey Baratheon', survival:'Poisoned by Olena Tyrrell and Little Finger'})-[:BELONG]->(HouseBaratheon)
+CREATE (Myrcella:Person {name:'Myrcella Baratheon', survival:'Poisoned by Ellaria Sand'})-[:BELONG]->(HouseBaratheon)
+CREATE (Tommen:Person {name:'Tommen Baratheon', survival:'Died in Explosion at the Sept of Baylor'})-[:BELONG]->(HouseBaratheon)
+CREATE (Melisandre:Person {name:'Melisandre', survival:'Died after disenchantment'})-[:BELONG]->(HouseBaratheon)
+CREATE (Brienne:Person {name:'Brienne Tarth', survival:'alive'})-[:BELONG_EARLY_STAGE]->(HouseBaratheon)
+CREATE
+	(Robert)-[:CHILDREN {roles:['son']}]->(Steffon),
+	(Robert)-[:ADORE]->(Lyanna),
+	(Robert)-[:GET_MARRIED]->(Cersei),
+	(Stannis)-[:CHILDREN {roles:['son']}]->(Steffon),
+	(Stannis)-[:GET_MARRIED]->(Selyse),
+	(Renly)-[:CHILDREN {roles:['son']}]->(Steffon),
+	(Shireen)-[:CHILDREN {roles:['daughter']}]->(Stannis),
+	(Joffrey)-[:CHILDREN {roles:['son']}]->(Robert),
+	(Tommen)-[:CHILDREN {roles:['son']}]->(Robert),
+	(Myrcella)-[:CHILDREN {roles:['daughter']}]->(Robert),
+	(Joffrey)-[:GET_ENGAGED]->(Sansa)
+	
+CREATE (HouseArryn:House {title:'House Arryn', capital:'Eyrie', familylanguage:'As High As Honor', crest:'Crescent and Falcon'})
+CREATE (Jon_Arryn:Person {name:'Jon Arryn', survival:'Poisoned by Lysa Tully and Petyr Baelish'})-[:BELONG]->(HouseArryn)
+CREATE (Robin:Person {name:'Robin Arryn', survival:'alive'})-[:BELONG]->(HouseArryn)
+CREATE (Robin)-[:CHILDREN {roles:['son']}]->(Jon_Arryn)
+
+CREATE (HouseTully:House {title:'House Tully', capital:'Riverrun', familylanguage:'Family,Duty,Honor', crest:'Trout'})
+CREATE (Hoster:Person {name:'Hoster Tully', survival:'Dead Natually'})-[:BELONG]->(HouseTully)
+CREATE (Brynden:Person {name:'Hoster Tully', survival:'Dead in the War of Riverrun'})-[:BELONG]->(HouseTully)
+CREATE (Catelyn:Person {name:'Catelyn Tully', survival:'Killed in the Red Wedding'})-[:BELONG]->(HouseTully)
+CREATE (Lysa:Person {name:'Lysa Tully', survival:'Pushed in the Moon Gate by Petyr Baelish'})-[:BELONG]->(HouseTully)
+CREATE (Edmure:Person {name:'Edmure Tully', survival:'alive'})-[:BELONG]->(HouseTully)
+CREATE (LittleFinger:Person {name:'Petyr Baelish', survival:'Dead Natually'})-[:BELONG]->(HouseTully)
+CREATE
+	(Hoster)-[:BROTHER]->(Brynden),
+	(Catelyn)-[:CHILDREN {roles:['daughter']}]->(Hoster),
+	(Lysa)-[:CHILDREN {roles:['daughter']}]->(Hoster),
+	(Edmure)-[:CHILDREN {roles:['son']}]->(Hoster),
+	(Edmure)-[:GET_MARRIED]->(Roslin),
+	(LittleFinger)-[:CHILDREN {roles:['adopted son']}]->(Hoster),
+	(Eddard)-[:GET_MARRIED]->(Catelyn),
+	(Jon_Arryn)-[:GET_MARRIED]->(Lysa),
+	(LittleFinger)-[:GET_MARRIED]->(Lysa),
+	(Robin)-[:CHILDREN {roles:['son']}]->(Lysa),
+	(Robin)-[:CHILDREN {roles:['son']}]->(Jon_Arryn)
+
+CREATE (HouseGreyjoy:House {title:'House Greyjoy', capital:'Pyke', familylanguage:'We Do Not Sow', crest:'Sea Monster'})
+CREATE (Balon:Person {name:'Balon Greyjoy', survival:'Pushed out of bridge by his brother Euron Greyjoy'})-[:BELONG]->(HouseGreyjoy)
+CREATE (Euron:Person {name:'Euron Greyjoy', survival:'Killed by Jaime Lannister'})-[:BELONG]->(HouseGreyjoy)
+CREATE (Rodrik:Person {name:'Rodrik Greyjoy', survival:'Died'})-[:BELONG]->(HouseGreyjoy)
+CREATE (Maron:Person {name:'Maron Greyjoy', survival:'Died'})-[:BELONG]->(HouseGreyjoy)
+CREATE (Asha:Person {name:'Asha Yara Greyjoy', survival:'alive'})-[:BELONG]->(HouseGreyjoy)
+CREATE (Theon:Person {name:'Theon Greyjoy', survival:'Died for Protecting Brandon Stark'})-[:BELONG]->(HouseGreyjoy)
+CREATE 
+	(Rodrik)-[:CHILDREN {roles:['son']}]->(Balon),
+	(Maron)-[:CHILDREN {roles:['son']}]->(Balon),
+	(Asha)-[:CHILDREN {roles:['daughter']}]->(Balon),
+	(Theon)-[:CHILDREN {roles:['son']}]->(Balon),
+	(Theon)-[:HOSTAGE_SON]->(Eddard)
+
+CREATE (HouseTyrell:House {title:'House Tyrell', capital:'Highgarden', familylanguage:'Growing Strong', crest:'Rose'})
+CREATE (Luthor:Person {name:'Luthor Tyrell', survival:'Dead'})-[:BELONG]->(HouseTyrell)
+CREATE (Olenna:Person {name:'Olenna Redwyne', survival:'Kill herself by drinking poison'})-[:BELONG]->(HouseTyrell)
+CREATE (Mace:Person {name:'Mace Tyrell', survival:'Died in Explosion at the Sept of Baylor'})-[:BELONG]->(HouseTyrell)
+CREATE (Alerie:Person {name:'Alerie Hightower', survival:'Died'})-[:BELONG]->(HouseTyrell)
+CREATE (Loras:Person {name:'Loras Tyrell', survival:'Died in Explosion at the Sept of Baylor'})-[:BELONG]->(HouseTyrell)
+CREATE (Margaery:Person {name:'Margaery Tyrell', survival:'Died in Explosion at the Sept of Baylor'})-[:BELONG]->(HouseTyrell)
+CREATE
+	(Luthor)-[:GET_MARRIED]->(Olenna),
+	(Mace)-[:CHILDREN {roles:['son']}]->(Olenna),
+	(Mace)-[:GET_MARRIED]->(Alerie),
+	(Loras)-[:CHILDREN {roles:['son']}]->(Mace),
+	(Margaery)-[:CHILDREN {roles:['daughter']}]->(Mace),
+	(Loras)-[:LOVERS]->(Renly),
+	(Margaery)-[:GET_MARRIED]->(Renly),
+	(Margaery)-[:GET_MARRIED]->(Joffrey),
+	(Margaery)-[:GET_MARRIED]->(Tommen)
+
+
+CREATE (HouseMartell:House {title:'House Martell', capital:'Sunspear', familylanguage:'Unbent, Unbowed, Unbroken', crest:'A red sun is pierced by a golden gun'})
+CREATE (Doran:Person {name:'Doran Martell', survival:'Killed by Ellaria Sand'})-[:BELONG]->(HouseMartell)
+CREATE (Elia:Person {name:'Doran Martell', survival:'Killed by The Mountain'})-[:BELONG]->(HouseMartell)
+CREATE (Oberyn:Person {name:'Oberyn Martell', survival:'Killed by The Mountain'})-[:BELONG]->(HouseMartell)
+CREATE (Trystane:Person {name:'Trystane Martell', survival:'Killed by Obara Sand'})-[:BELONG]->(HouseMartell)
+CREATE (Ellaria:Person {name:'Ellaria Sand', survival:'jailed by Cercei'})-[:BELONG]->(HouseMartell)
+CREATE (Tyene:Person {name:'Tyene Sand', survival:'poisoned by Cercei'})-[:BELONG]->(HouseMartell)
+CREATE (Obara:Person {name:'Obara Sand', survival:'killed by Euron'})-[:BELONG]->(HouseMartell)
+CREATE (Nymeria:Person {name:'Nymeria Sand', survival:'killed by Euron'})-[:BELONG]->(HouseMartell)
+CREATE
+	(Doran)-[:BROTHER]->(Elia),
+	(Doran)-[:BROTHER]->(Oberyn),
+	(Elia)-[:SISTER]->(Oberyn),
+	(Trystane)-[:CHILDREN {roles:['son']}]->(Doran),
+	(Trystane)-[:GET_MARRIED]->(Myrcella),
+	(Ellaria)-[:MISTRESS]->(Oberyn),
+	(Tyene)-[:BASTARD]->(Oberyn),
+	(Obara)-[:BASTARD]->(Oberyn),
+	(Nymeria)-[:BASTARD]->(Oberyn)
+
+CREATE (HouseTargaryen:House {title:'House Targaryen', capital:'Kings landing', familylanguage:'Blood and Fire', crest:'Three-headed dragon'})
+CREATE (Aerys:Person {name:'Aerys Targaryen', survival:'The Mad King was killed by Jaime Lannister'})-[:BELONG]->(HouseTargaryen)
+CREATE (Rhaella:Person {name:'Rhaella Targaryen', survival:'Died after giving birth to Daenerys Targaryen'})-[:BELONG]->(HouseTargaryen)
+CREATE (Rhaegar:Person {name:'Rhaegar Targaryen', survival:'Killed by Robert Baratheon'})-[:BELONG]->(HouseTargaryen)
+CREATE (Viserys:Person {name:'Viserys Targaryen', survival:'Killed by Khal Drogo'})-[:BELONG]->(HouseTargaryen)
+CREATE (Daenerys:Person {name:'Daenerys Targaryen', survival:'Killed by Jon'})-[:BELONG]->(HHouseTargaryen)
+CREATE (Rhaenys:Person {name:'Rhaenys Targaryen', survival:'Killed by The Mountain'})-[:BELONG]->(HouseTargaryen)
+CREATE (Aegon:Person {name:'Aegon Targaryen', survival:'Killed by The Mountain'})-[:BELONG]->(HouseTargaryen)
+CREATE (Jon:Person {name:'Jon Snow', survival:'alive'})-[:BELONG]->(HouseTargaryen)
+CREATE (Drogon:Dragon {name:'Drogon', survival:'alive'})-[:BELONG]->(HouseTargaryen)
+CREATE (Rhaegal:Dragon {name:'Rhaegal', survival:'alive'})-[:BELONG]->(HouseTargaryen)
+CREATE (Viserion:Dragon {name:'Viserion', survival:'Killed by whitewalkers'})-[:BELONG]->(HouseTargaryen)
+CREATE
+	(Rhaegar)-[:CHILDREN {roles:['son']}]->(Aerys),
+	(Viserys)-[:CHILDREN {roles:['son']}]->(Aerys),
+	(Daenerys)-[:CHILDREN {roles:['daughter']}]->(Aerys),
+	(Rhaegar)-[:GET_MARRIED]->(Elia),
+	(Rhaegar)-[:LOVERS]->(Lyanna),
+	(Rhaenys)-[:CHILDREN {roles:['daughter']}]->(Rhaegar),
+	(Aegon)-[:CHILDREN {roles:['son']}]->(Rhaegar),
+	(Aegon)-[:SAMEPERSON]->(Jon),
+	(Jon)-[:BASTARD]->(Eddard),
+	(Daenerys)-[:CHILDREN {roles:['daughter']}]->(Aerys),
+	(Drogon)-[:CHILDREN {roles:['dragon']}]->(Daenerys),
+	(Rhaegal)-[:CHILDREN {roles:['dragon']}]->(Daenerys),
+	(Viserion)-[:CHILDREN {roles:['dragon']}]->(Daenerys)
+WITH *
+MATCH (n) return n
